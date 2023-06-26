@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../database');
 
-const customerCode = sequelize.define('codigo-cliente', {
+const customerCode = sequelize.define('codigo_cliente', {
    id: {
       type: Sequelize.STRING,
       primaryKey: true,
