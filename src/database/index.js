@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const DB_URI = "postgres://BrunoPogianMallta:QkZNLhAno37W@ep-jolly-butterfly-142296.us-east-2.aws.neon.tech/coletor-de-codigo;" // Defina a variável de ambiente DB_URI com a URI de conexão
+const DB_URI = "postgres://BrunoPogianMallta:QkZNLhAno37W@ep-jolly-butterfly-142296.us-east-2.aws.neon.tech/coletor-de-codigo?sslmode=require;" // Defina a variável de ambiente DB_URI com a URI de conexão
 
 let sequelize;
 
