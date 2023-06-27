@@ -20,6 +20,10 @@ if (DB_URI) {
       timezone: '-03:00',
       dialect: 'postgres',
       protocol: 'postgres',
+      ssl: {
+         require: true,
+         rejectUnauthorized: false // Defina como true se o certificado SSL não for confiável
+       }
     }
   );
 }
