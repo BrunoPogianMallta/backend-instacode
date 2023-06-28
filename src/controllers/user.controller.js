@@ -44,6 +44,8 @@ async function createUser(req, res) {
   }
 }
 
+
+
 async function getUserByEmail(req, res) {
   try {
     const email = req.params.email;
