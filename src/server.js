@@ -5,13 +5,8 @@ const cors = require('cors');
 
 const app = express();
 app.use(express.json());
-const corsOptions = {
-  origin: ['http://127.0.0.1:5500', 'https://instacodehelper.cyclic.app'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-};
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use('/api/v1', routes);
 
 
