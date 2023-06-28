@@ -14,7 +14,7 @@ exports.getByNameAndCode = async () => {
   try {
     const customers = await customerCode.findAll({
       order:[['name','ASC']],
-      attributes:['name','lastName','state','customerCode']
+      attributes:['name','customerCode']
     });
     return customers;
   } catch (error) {

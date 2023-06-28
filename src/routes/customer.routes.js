@@ -1,6 +1,8 @@
 const express = require('express');
 const customerController = require('../controllers/customer.controller');
 const { validateCustomerData } = require('../guards/customer.guard');
+const {verifyJWT} =require('../utils/verify.jwt');
+
 
 const router = express.Router();
 

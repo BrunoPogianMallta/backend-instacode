@@ -51,12 +51,16 @@ exports.createCustomer = async (req, res, next) => {
   try {
     const existingCustomer = await customerRepository.getByNameAndCode();
 
-    const filteredCustomer = existingCustomer.find(
-      (customer) => customer.name === name && customer.customerCode === customerCode
+    const filteredCustomers = existingCustomer.filter(
+      (customer) =>
+        customer.name === name &&
+        customer.lastName === lastName &&
+        customer.state === state &&
+        customer.customerCode === customerCode
     );
 
-    if (filteredCustomer) {
-      return res.status(409).json({ error: 'A customer with the given name and customer code already exists' });
+    if (filteredCustomers.length > 0) {
+      return res.status(409).json({ error: 'A customer with the given name, last name, state, and customer code already exists' });
     }
 
     const createdCustomer = await customerRepository.create({
