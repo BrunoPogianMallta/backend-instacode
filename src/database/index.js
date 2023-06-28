@@ -9,6 +9,7 @@ if (DB_URI) {
     timezone: '-03:00',
     dialect: 'postgres',
     protocol: 'postgres',
+    
   });
 } else {
   sequelize = new Sequelize(
