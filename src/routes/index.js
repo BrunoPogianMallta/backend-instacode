@@ -11,7 +11,7 @@ app.get('/health-check', (req, res) => {
   res.json({ status: 200, message: 'OK' });
 });
 
-app.use('/customers',verifyJWT, customerRoutes);
+app.use('/customers', customerRoutes);
 app.use('/user',userRoutes);
 
 
