@@ -44,7 +44,32 @@ async function createUser(req, res) {
   }
 }
 
+async function resetPassword(req, res) {
+  try {
+    const { email, newPassword } = req.body;
+    console.log("usuario",email)
 
+    // Buscar o usuário no banco de dados pelo email
+    const user = await User.findOne({ where: { email } });
+    console.log('Use find one',user.email)
+
+    if (!user) {
+      return res.status(404).json({ message: 'Usuário não encontrado' });
+    }
+
+    // Criar um hash da nova senha utilizando o bcrypt
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    // Atualizar a senha do usuário no banco de dados
+    user.password = hashedPassword;
+    await user.save();
+
+    return res.status(200).json({ message: 'Senha alterada com sucesso' });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Erro no servidor' });
+  }
+}
 
 async function getUserByEmail(req, res) {
   try {
@@ -96,4 +121,4 @@ async function loginUser(req, res) {
 
 
 
-module.exports = { createUser, loginUser, getUserByEmail};
+module.exports = { createUser, loginUser, getUserByEmail,resetPassword};
