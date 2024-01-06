@@ -6,9 +6,9 @@ const {verifyJWT} =require('../utils/verify.jwt');
 
 const router = express.Router();
 
-router.get('/', customerController.getAllCustomers); 
+router.get('/name/:name', customerController.getCustomersBySearch);
 router.get('/:id', customerController.getCustomerById);
-router.get('/name', customerController.getCustomerByName);
+router.get('/', customerController.getAllCustomers); 
 
 router.post('/', validateCustomerData, customerController.createCustomer);
 

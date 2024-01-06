@@ -36,7 +36,7 @@ async function createUser(req, res) {
       email,
       acceptedTerms
     });
-
+    console.log('Usuário cadastrado com sucesso')
     return res.status(201).json(newUser);
   } catch (error) {
     console.error(error);

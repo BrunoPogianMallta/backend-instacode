@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
-const DB_URI = "postgres://BrunoPogianMallta:QkZNLhAno37W@ep-jolly-butterfly-142296.us-east-2.aws.neon.tech/coletor-de-codigo?sslmode=require;" // Defina a variável de ambiente DB_URI com a URI de conexão
-
+// const DB_URI = "postgres://BrunoPogianMallta:QkZNLhAno37W@ep-jolly-butterfly-142296.us-east-2.aws.neon.tech/coletor-de-codigo?sslmode=require;";
+const DB_URI = false
 let sequelize;
 
 if (DB_URI) {
@@ -9,11 +9,11 @@ if (DB_URI) {
     timezone: '-03:00',
     dialect: 'postgres',
     protocol: 'postgres',
-    
+    logging: false, // Desativa os logs de sincronização
   });
 } else {
   sequelize = new Sequelize(
-    process.env.DB_DATABASE || 'coletor-de-codigo',
+    process.env.DB_DATABASE || 'insta-code',
     process.env.DB_USERNAME || 'postgres',
     process.env.DB_PASSWORD || 'postgres', {
       host: process.env.DB_HOST || 'localhost',
@@ -22,9 +22,10 @@ if (DB_URI) {
       dialect: 'postgres',
       protocol: 'postgres',
       ssl: {
-         require: true,
-         rejectUnauthorized: false // Defina como true se o certificado SSL não for confiável
-       }
+        require: true,
+        rejectUnauthorized: false,
+      },
+      logging: false, // Desativa os logs de sincronização
     }
   );
 }
